@@ -56,6 +56,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  
+  assets: #Aqui hay que poner las rutas donde estan las imagenes para que se puedan cargar en local
+    - assets/images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

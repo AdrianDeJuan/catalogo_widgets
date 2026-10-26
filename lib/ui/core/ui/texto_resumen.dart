@@ -14,11 +14,17 @@ class TextoResumen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int lineas;
+    if (maxNumLines < 1) {
+      lineas = 1;
+    } else {
+      lineas = maxNumLines;
+    }
     return Text(
       texto,
       textAlign: alineacion,
       overflow: TextOverflow.ellipsis,
-      maxLines: maxNumLines,
+      maxLines: lineas,
     );
   }
 }

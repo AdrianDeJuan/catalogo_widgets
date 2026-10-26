@@ -5,6 +5,7 @@ enum TipoTexto { titulo, subtitulo, cuerpo }
 class TextoJerarquico extends StatelessWidget {
   final String texto;
   final TipoTexto tipoTexto;
+
   const TextoJerarquico({
     super.key,
     required this.texto,

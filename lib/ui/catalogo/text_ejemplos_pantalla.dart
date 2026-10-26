@@ -1,7 +1,8 @@
 import 'package:catalogo_widgets/ui/core/ui/texto_jerarquico.dart';
 import 'package:flutter/material.dart';
-import 'package:catalogo_widgets/ui/core/ui/texto_resumen.dart';
-import 'package:catalogo_widgets/ui/core/ui/etiqueta_catalogo.dart';
+
+// import 'package:catalogo_widgets/ui/core/ui/texto_resumen.dart';
+// import 'package:catalogo_widgets/ui/core/ui/etiqueta_catalogo.dart';
 
 class TextEjemplosPantalla extends StatelessWidget {
   const TextEjemplosPantalla({super.key});
@@ -11,109 +12,102 @@ class TextEjemplosPantalla extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Ejemplos de Text')),
 
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          // Aquí añadiremos los ejemplos del tutorial.
-          const ListTile(
-            subtitle: Text(
-              'Ejemplos normales de texto',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          const Text('Ruta de la cascada'),
-          const Text(
-            'Ruta de la cascada',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.indigo,
-            ),
-          ),
-          const Divider(height: 30, thickness: 1),
-          const ListTile(
-            subtitle: Text(
-              'Ejemplos de la clase etiqueta catalogo',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          const EtiquetaCatalogo(texto: 'Ruta de la cascada', destacada: true),
-          const EtiquetaCatalogo(texto: "Ruta de la cascada", destacada: false),
-          const Divider(height: 30, thickness: 1),
-          const ListTile(
-            subtitle: Text(
-              'Ejemplos de SizedBox',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          const Text(
-            'Ruta de la cascada',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.teal,
-            ),
-          ),
-          const Center(
-            child: SizedBox(
-              width: 150,
-              child: Text('Una ruta fácil', textAlign: TextAlign.right),
-            ),
-          ),
-          const Center(
-            child: SizedBox(
-              width: 220,
-              child: Text(
-                "Una ruta fácil, con un paisaje espectacular y una cascada impresionante. Ideal para disfrutar en familia y hacer fotos increíbles.",
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
+      body: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'TextoJerarquico',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-            ),
-          ),
-          const Center(
-            child: SizedBox(
-              width: 180,
-              child: Text(
-                'Una descripción más larga que el espacio disponible',
-                softWrap: false,
-                overflow: TextOverflow.fade,
+              SizedBox(height: 8),
+              Text('Muestra texto con tres niveles de jerarquía.'),
+              SizedBox(height: 20),
+              Text(
+                'Propiedades',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
-            ),
+              SizedBox(height: 8),
+              Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'texto',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'monospace',
+                      ),
+                    ),
+                    TextSpan(text: ': obligatorio. Texto que se muestra.'),
+                  ],
+                ),
+              ),
+              SizedBox(height: 6),
+              Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'tipo',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'monospace',
+                      ),
+                    ),
+                    TextSpan(
+                      text: ': opcional. Por defecto, TipoTexto.cuerpo.',
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Ejemplo de uso',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              SizedBox(
+                width: double.infinity,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF3F4F6),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                    border: Border.fromBorderSide(
+                      BorderSide(color: Color(0xFFD1D5DB)),
+                    ),
+                  ),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.all(16),
+                    child: SelectableText(
+                      "TextoJerarquico(\n"
+                      "  texto: 'Ruta del río',\n"
+                      "  tipo: TipoTexto.titulo,\n"
+                      "),",
+                      style: TextStyle(
+                        fontFamily: 'monospace',
+                        fontSize: 14,
+                        height: 1.5,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text('Resultado', style: TextStyle(fontWeight: FontWeight.bold)),
+              SizedBox(height: 12),
+              TextoJerarquico(
+                texto: 'Ruta del río',
+                tipoTexto: TipoTexto.titulo,
+              ),
+            ],
           ),
-          const Text('12 km', semanticsLabel: 'Doce kilómetros'),
-          const Divider(height: 30, thickness: 1),
-          const ListTile(
-            subtitle: Text(
-              'Ejemplos de la clase texto jerarquico',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          const TextoJerarquico(
-            texto: "Ruta de la cascada",
-            tipoTexto: TipoTexto.cuerpo,
-          ),
-          const TextoJerarquico(
-            texto: "Ruta de la cascada",
-            tipoTexto: TipoTexto.subtitulo,
-          ),
-          const TextoJerarquico(
-            texto: "Ruta de la cascada",
-            tipoTexto: TipoTexto.titulo,
-          ),
-          const EtiquetaCatalogo(texto: "Ruta de la cascada", destacada: true),
-          const Divider(height: 30, thickness: 1),
-          const ListTile(
-            subtitle: Text(
-              'Ejemplos de la clase texto resumen',
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          const TextoResumen(
-            texto: "Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada y Ruta de la cascada",
-            maxNumLines: 1,
-            alineacion: TextAlign.center,
-          ),
-        ],
+        ),
       ),
     );
   }
