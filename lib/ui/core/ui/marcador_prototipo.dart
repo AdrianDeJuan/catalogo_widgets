@@ -10,8 +10,34 @@ class MarcadorPrototipo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final estilo = TextStyle();
+    String marcador = getMarcador();
+    Color color = getColor();
 
-    return Text("Hola", style: estilo);
+    return SizedBox(
+      height: alto,
+      width: 50,
+      child: Center(
+        child: Card(
+          shadowColor: color,
+          child: Text(marcador),
+        ), //Sin terminar el build
+      ),
+    );
+  }
+
+  String getMarcador() {
+    return switch (tipo) {
+      TipoMarcador.imagen => "Esto es una imagen",
+      TipoMarcador.mapa => "Esto es un mapa",
+      TipoMarcador.grafico => "Esto es un grafico",
+    };
+  }
+
+  Color getColor() {
+    return switch (tipo) {
+      TipoMarcador.imagen => Colors.green,
+      TipoMarcador.mapa => Colors.blue,
+      TipoMarcador.grafico => Colors.red,
+    };
   }
 }

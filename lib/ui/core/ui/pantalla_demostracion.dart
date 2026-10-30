@@ -16,8 +16,10 @@ class PantallaDemostracion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final estilo = TextStyle();
-
-    return Text("Hola", style: estilo);
+    return Scaffold(
+      appBar: AppBar(title: Text(titulo), centerTitle: centrarTitulo),
+      backgroundColor: destacada ? Colors.blue : Colors.white,
+      body: contenido,
+    );
   }
 }

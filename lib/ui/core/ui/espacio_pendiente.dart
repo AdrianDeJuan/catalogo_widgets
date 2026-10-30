@@ -12,8 +12,12 @@ class EspacioPendiente extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final estilo = TextStyle();
-
-    return Text("Hola", style: estilo);
+    return Center(
+      child: SizedBox(
+        height: compacto ? 80 : 160,
+        width: 50,
+        child: Placeholder(child: Text(etiqueta)), //Posible error?
+      ),
+    );
   }
 }

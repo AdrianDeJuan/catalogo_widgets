@@ -10,7 +10,7 @@ class TextoResumen extends StatelessWidget {
     required this.texto,
     required this.maxNumLines,
     this.alineacion = TextAlign.center,
-  }) : assert(maxNumLines > 0, "Como minimo tiene que haber 1 linea");
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -14,7 +14,7 @@ class ImagenRemota extends StatelessWidget {
     this.descripcion,
   }) : assert(
          !decorativa || descripcion != null,
-         "Si es imagen decorativa tienes que poner si o si una decripcion",
+         "Si es imagen decorativa tienes que poner si o si una descripcion",
        );
 
   @override
@@ -24,7 +24,7 @@ class ImagenRemota extends StatelessWidget {
       child: Image.network(
         url,
         fit: ajuste,
-        semanticLabel: descripcion ?? "",
+        semanticLabel: decorativa ? descripcion : null,
         alignment: Alignment.center,
         loadingBuilder: (context, child, progress) {
           if (progress == null) return child;

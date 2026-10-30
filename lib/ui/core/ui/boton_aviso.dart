@@ -16,8 +16,17 @@ class BotonAviso extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final estilo = TextStyle();
-
-    return Text("Hola", style: estilo);
+    return FilledButton(
+      onPressed: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(etiqueta),
+            behavior: flotante ? SnackBarBehavior.floating : null,
+            duration: Duration(seconds: segundos),
+          ),
+        );
+      },
+      child: Icon(Icons.warning_outlined, size: 20, color: Colors.red),
+    );
   }
 }

@@ -16,8 +16,20 @@ class BotonConIcono extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final estilo = TextStyle();
-
-    return Text("Hola", style: estilo);
+    return Row(
+      children: [
+        FilledButton.icon(
+          onPressed: onPressed,
+          icon: Icon(icono),
+          label: Text(texto),
+        ),
+        const SizedBox(width: 20),
+        OutlinedButton.icon(
+          onPressed: onPressed,
+          icon: secundario ? Icon(Icons.favorite) : Icon(Icons.favorite_border),
+          label: secundario ? Text("Favorito") : Text("No favorito"),
+        ),
+      ],
+    );
   }
 }
